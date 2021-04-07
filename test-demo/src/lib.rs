@@ -55,6 +55,13 @@ mod tests {
         assert_eq!(1,2);
     }
     // 一般在tests文件下做集成测试
+
+    // cargo test result_test -- --nocapture
+    #[test]
+    fn result_test() {
+        let result = get_result().unwrap();
+        println!("{}", result);
+    }
 }
 
 fn default_panic() {
@@ -67,4 +74,8 @@ fn expect_panic() {
 
 pub fn add_two(n1: i32, n2: i32) -> i32 {
     n1 + n2
+}
+
+fn get_result() -> Result<String, String> {
+    Ok(String::from("success"))
 }
